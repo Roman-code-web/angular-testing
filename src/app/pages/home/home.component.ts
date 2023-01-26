@@ -13,6 +13,7 @@ export class HomeComponent {
   resultado!:number;
   formcalcular!:FormGroup;
 
+
   constructor(private frmb : FormBuilder){
     this.formcalcular=frmb.group({
       num1:['',
@@ -48,7 +49,10 @@ export class HomeComponent {
     else if(this.operacion=='/'){
       this.resultado=this.num1 / this.num2;
     }else{
-      
+
     }
+  }
+  validacion(name: string) {
+    return this.formcalcular.get(name)?.errors && (this.formcalcular.get(name)?.touched || this.formcalcular.get(name)?.dirty);
   }
 }
